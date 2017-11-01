@@ -2,7 +2,7 @@
 
 
 #include "DHT.h"
-#define DHTPIN 2     // what digital pin we're connected to
+#define DHTPIN 6     // what digital pin we're connected to
 #define DHTTYPE DHT11   // DHT 11
 DHT dht(DHTPIN, DHTTYPE);
 
@@ -41,8 +41,16 @@ void draw(void) {
   u8g.firstPage();  
   do {
     u8g.setFont(u8g_font_fub30); // fub25 25 pixels - stock was unifont at 10 pixels
-    u8g.setPrintPos(0, 31); 
-    u8g.print(Tint);
+    
+    if (Tint > 9){
+      u8g.setPrintPos(0, 31); // Start at left
+      u8g.print(Tint);
+    }
+    else{
+      u8g.setPrintPos(23, 31); // Shift the location to the right
+      u8g.print(Tint);
+      }
+    
     
     u8g.setFont(u8g_font_7x14B);
     u8g.setPrintPos(0, 50); 
@@ -51,10 +59,10 @@ void draw(void) {
     u8g.print(hic);
 
     u8g.setFont(u8g_font_7x14B);
-    u8g.setPrintPos(60, 10); 
-    u8g.print("INTÉRIEUR"); 
-    u8g.setPrintPos(48, 31); 
-    u8g.print("°C");
+    u8g.setPrintPos(65, 10); 
+    u8g.print("INTERIEUR"); 
+    u8g.setPrintPos(48, 36); 
+    u8g.print("°C"); 
     u8g.setPrintPos(40, 50); 
     u8g.print(" %");
     u8g.setPrintPos(65, 50); 
