@@ -18,6 +18,7 @@ void setup() {
   Serial.begin(9600);
   Serial.println("DHTxx test!");
   dht.begin();
+  clearOLED();
   
 }
 
@@ -81,4 +82,10 @@ void draw_static(void) {
   do {
 
   } while( u8g.nextPage() );
+}
+
+void clearOLED(){
+    u8g.firstPage();  
+    do {
+    } while( u8g.nextPage() );
 }
